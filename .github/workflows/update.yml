@@ -1,0 +1,15 @@
+name: Update
+
+on:
+  schedule:
+    - cron: '30 * * * *' # Every hour on the 30th minute
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # https://github.com/actions/checkout/releases/tag/v5.0.0
+      - uses: DeterminateSystems/determinate-nix-action@0261e3554149588c911e068afc042bdc0627f227 # https://github.com/DeterminateSystems/determinate-nix-action/releases/tag/v3.12.2
+      - name: Default shell will be `nu`
+        run: ./update.nu
